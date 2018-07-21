@@ -31,7 +31,7 @@ hence
 y' = Xb'
 """
 
-class linear:
+class Multiple:
     def __init__(self):
         self.features = []
         self.a = np.array([1])
@@ -52,5 +52,8 @@ fit function has same meaning as in sklearn module same is with predict function
         self.e = np.mean(self.e)
 
     def predict(self, feature):
-        featureP = np.concatenate((self.a, feature), axis=0)
-        return [(np.dot(featureP, self.constants))]
+        result = []
+        for feature in features:
+            featureP = np.concatenate((self.a, feature), axis=0)
+            result.append((np.dot(featureP, self.constants)))
+        return result
